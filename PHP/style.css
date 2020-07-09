@@ -1,3 +1,6 @@
 .menuPrincipal ul li {
   display: inline;
 }
+.error{
+	color: red;
+}

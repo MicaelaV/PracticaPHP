@@ -13,24 +13,24 @@
 		//Verificar que no falten campos
 		if (empty($username) || empty($mail) || empty($password) || empty($passwordRepeat)) {
 			//Devuelvo un codico para error = emptyfuelds a la misma pagina donde estaba
-			header("Location: ../signup.php?error?=emptyfields&username=".$username."&email=".$mail);
+			header("Location: ../signup.php?error=emptyfields&username=".$username."&email=".$mail);
 			exit();//no continuar ningun codigo despues de aqui
 		} else if (!filter_var($mail, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-z0-9]*$/",$username) ) {
-			header("Location: ../signup.php?error?=invalidmailusername");
+			header("Location: ../signup.php?error=invalidmailusername");
 			exit();
 
 		} else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 			//Validar que el email e usuario sea valido
-			header("Location: ../signup.php?error?=invalidmail&username=".$username);
+			header("Location: ../signup.php?error=invalidmail&username=".$username);
 			exit();
 
 		} else if (!preg_match("/^[a-zA-z0-9]*$/",$username)) {
 			//Validar Usuario sea con caracteres apropiados
-			header("Location: ../signup.php?error?=invalidusername&mail=".$mail);
+			header("Location: ../signup.php?error=invalidusername&mail=".$mail);
 			exit();
 
 		} else if ($password !== $passwordRepeat) {
-			header("Location: ../signup.php?error?=passwordcheck&username=".$username."&mail=".$mail);
+			header("Location: ../signup.php?error=passwordcheck&username=".$username."&mail=".$mail);
 			exit();
 
 		} 
@@ -70,6 +70,7 @@
 						mysqli_stmt_bind_param($represent,"sss",$username,$mail,$encriptado);
 						mysqli_stmt_execute($represent);
 						mysqli_stmt_store_result($represent);
+						header("Location: ../signup.php?signup=success");
 						exit();
 					}
 				}

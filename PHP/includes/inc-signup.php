@@ -16,11 +16,12 @@
 			header("Location: ../signup.php?error=emptyfields&username=".$username."&email=".$mail);
 			exit();//no continuar ningun codigo despues de aqui
 		} else if (!filter_var($mail, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-z0-9]*$/",$username) ) {
+			//Validacion de mail y usuario
 			header("Location: ../signup.php?error=invalidmailusername");
 			exit();
 
 		} else if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-			//Validar que el email e usuario sea valido
+			//Validar que el email sea "correcto"
 			header("Location: ../signup.php?error=invalidmail&username=".$username);
 			exit();
 

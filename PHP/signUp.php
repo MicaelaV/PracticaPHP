@@ -29,7 +29,9 @@
 				}
 				else if (isset($_GET['signup'])) {
 					if ($_GET['signup'] == "success") {
-					echo '<p class="success"> Usuario creado!</p>';
+						echo '<p class="success"> Usuario creado!</p>';
+					} else if($_GET['signup'] == "resetpwd"){
+						echo '<p class="success"> Contraseña Modificada!</p>';
 					}				
 				}
 			?>
@@ -40,6 +42,8 @@
 				<input type="password" name="passwordRepeat" value="" placeholder="Repetir Password">
 				<button type="submit" name="nuevaCuenta">Crear</button>												
 			</form>
+			<!-- Recuperar contraseña -->
+			<a href="resetpwd.php">Olvidaste tu contraseña?</a>
 		</section>
 	</div>
 </main>

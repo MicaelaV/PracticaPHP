@@ -22,7 +22,7 @@ if (isset($_POST['buttonLogin'])) {
 			exit();			
 		}
 		else {
-			mysqli_stmt_bind_param($represent,"ss",$mailUser,$password);
+			mysqli_stmt_bind_param($represent,"ss",$mailUser,$mailUser);
 			mysqli_stmt_execute($represent);
 			$resultado = mysqli_stmt_get_result($represent); //Obtiene un conjunto de resultados de una sentencia preparada
 			if ($row = mysqli_fetch_assoc($resultado)) {
